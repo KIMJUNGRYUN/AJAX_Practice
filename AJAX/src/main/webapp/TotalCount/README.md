@@ -27,7 +27,7 @@
 AJAX(Asynchronous JavaScript and XML)는 클라이언트와 서버 간의 비동기 데이터 전송을 가능하게 합니다. 이 프로젝트에서는 XMLHttpRequest 객체를 사용하여 서버에 GET 요청을 보냅니다.
 **주요 메서드**
 - **`open(method, url, async)`**: 요청 초기화 (GET/POST 방식, URL 설정, 비동기 여부 지정).
-- **`send(data)1**: 서버로 요청 데이터 전송.
+- **`send(data)`**: 서버로 요청 데이터 전송.
 - **`onreadystatechange`**: 요청 상태 변화에 따라 실행될 함수.
     - **`readyState == 4`**: 요청 완료.
     - **`status == 200`**: 요청 성공.
@@ -47,7 +47,9 @@ request.onreadystatechange = function () {
 JSP는 Java 기반의 서버 스크립트 언어로 클라이언트 요청을 처리합니다. 클라이언트가 전송한 데이터를 받아 필요한 로직(여기서는 합계 계산)을 수행하고 결과를 반환합니다.
 **주요 구성 요소**
 **1.`request.getParameter`**("paramName"): 클라이언트에서 전달된 데이터를 가져옴.
+
 **2.`비즈니스 로직`**: 1부터 입력된 숫자까지의 합을 계산.
+
 **3.`out.print(data)`**: 클라이언트에 결과를 반환.
 ```jsp
 <%
