@@ -23,7 +23,23 @@
   <hr>
 
   ## 주요 학습 내용 ##
-### 1.AJAX 요청과 응답
+**1.AJAX 요청과 응답**
 AJAX(Asynchronous JavaScript and XML)는 클라이언트와 서버 간의 비동기 데이터 전송을 가능하게 합니다. 이 프로젝트에서는 XMLHttpRequest 객체를 사용하여 서버에 GET 요청을 보냅니다.
+**주요 메서드**
+- **`open(method, url, async)`**: 요청 초기화 (GET/POST 방식, URL 설정, 비동기 여부 지정).
+- **`send(data)1**: 서버로 요청 데이터 전송.
+- **`onreadystatechange`**: 요청 상태 변화에 따라 실행될 함수.
+    - **`readyState == 4`**: 요청 완료.
+    - **`status == 200`**: 요청 성공.
+```jsp
+const request = new XMLHttpRequest();
+request.open('GET', 'sum.jsp?val=5', true);
+request.send();
+request.onreadystatechange = function () {
+  if (request.readyState == 4 && request.status == 200) {
+    console.log(request.responseText); // 서버 응답 데이터
+  }
+};
+```
   
   
