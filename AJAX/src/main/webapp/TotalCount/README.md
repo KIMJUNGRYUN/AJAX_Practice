@@ -47,9 +47,11 @@ request.onreadystatechange = function () {
 JSP는 Java 기반의 서버 스크립트 언어로 클라이언트 요청을 처리합니다. 클라이언트가 전송한 데이터를 받아 필요한 로직(여기서는 합계 계산)을 수행하고 결과를 반환합니다.
 
 **주요 구성 요소**
+
 **1.`request.getParameter`**("paramName"): 클라이언트에서 전달된 데이터를 가져옴.
 **2.`비즈니스 로직`**: 1부터 입력된 숫자까지의 합을 계산.
 **3.`out.print(data)`**: 클라이언트에 결과를 반환.
+
 ```jsp
 <%
     int n = Integer.parseInt(request.getParameter("val"));
