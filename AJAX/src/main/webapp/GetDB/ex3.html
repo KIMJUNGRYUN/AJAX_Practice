@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="KO">
+
+<head>
+<meta charset="UTF-8">
+<title>AJAX 연습</title>
+</head>
+
+<body>
+	<h1>아이디 입력시 DB검색해 결과출력</h1>
+	아이디 입력 : <input onkeyup="sendServer();" type="text">
+	<div id="output"></div>
+	<script>
+		const input = document.querySelector('input[type="text"]');
+		const output = document.getElementById('output');
+		const request = new XMLHttpRequest; //ajax 객체 생성
+
+		function sendServer() {
+			//input태그에 아이디를 입력하면 이벤트 keyup 일때 AJAX 서버로 GET 요청 (id)
+			let id = input.value;
+			let url = "getDB.jsp?id=" + id;
+			request.onreadystatechange = getInfo;  //함수 getInfo()를 아래 정의
+			request.open('GET', url, true);
+			request.send();
+		}
+		function getInfo() { //id로 db 검색 결과를 받아서 출력
+			if (request.readyState == 4 && request.status == 200) {
+				let info = request.responseText;
+				output.textContent = info;
+			}
+		}
+	</script>
+</body>
+
+</html>
