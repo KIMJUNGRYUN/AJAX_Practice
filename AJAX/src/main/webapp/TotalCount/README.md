@@ -82,4 +82,83 @@ document.querySelector('button').onclick = sendServer;
 ```jsp
 document.getElementById('output').innerHTML = request.responseText;
 ```
-  
+
+### 전체 코드###
+**ex1.html**
+```jsp
+<!DOCTYPE html>
+<html lang="KO">
+<head>
+  <meta charset="UTF-8">
+  <title>AJAX 연습</title>
+</head>
+<body>
+  <h1>1부터 빈칸에 적은 숫자까지 총합은?</h1>
+  <input type="text" placeholder="숫자를 입력하세요">
+  <button onclick="sendServer();">계산하기</button>
+  <div id="output"></div>
+  <script>
+    const input = document.querySelector('input[type="text"]');
+    const output = document.getElementById('output');
+    const request = new XMLHttpRequest();
+
+    function sendServer() {
+      let v = input.value;
+
+      // 유효성 검사
+      if (isNaN(v) || v.trim() === "") {
+        output.innerHTML = "유효한 숫자를 입력해주세요.";
+        return;
+      }
+
+      // AJAX 요청 보내기
+      let url = "sum.jsp?val=" + v;
+      request.open('GET', url, true);
+      request.send();
+      request.onreadystatechange = function () {
+        if (request.readyState == 4 && request.status == 200) {
+          output.innerHTML = request.responseText; // 결과 출력
+        }
+      };
+
+      // 에러 처리
+      request.onerror = function () {
+        output.innerHTML = "서버 요청 중 오류가 발생했습니다.";
+      };
+    }
+  </script>
+</body>
+</html>
+```
+**sum.jsp**
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+    int n = Integer.parseInt(request.getParameter("val"));
+    int total = 0;
+    for (int i = 1; i <= n; i++) {
+        total += i;
+    }
+    out.print(total);
+%>
+```
+<hr>
+
+### 실행 과정 ###
+**1.파일저장**:
+    - **`ex1.html`**과 **`sum.jsp`**를 같은 디렉토리에 저장.
+**2.서버 실행**:
+    - Apache Tomcat 또는 다른 JSP 실행 환경에서 서버를 시작.
+**3.브라우저에서 실행**:
+    - 브라우저에서 **`ex1.html`**을 열고 숫자를 입력 후 "계산하기" 버튼 클릭.
+**4.결과 확인**:
+    - 입력값에 따른 총합이 화면에 출력됩니다.
+
+### 학습 포인트 ###
+1. **AJAX의 기본 동작 원리**:
+    - 클라이언트와 서버 간 비동기 요청/응답의 흐름 이해.
+2. **JSP를 활용한 서버 처리**:
+    - 클라이언트로부터 데이터 수신 및 계산 로직 구현.
+3. **에러 처리**:
+    - 클라이언트 입력값 검증 및 AJAX 요청 실패 시 처리 방법.
