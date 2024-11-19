@@ -23,7 +23,7 @@
   <hr>
 
   ## 주요 학습 내용 ##
-  ### 1.AJAX 요청과 응답
+### 1.AJAX 요청과 응답
 AJAX(Asynchronous JavaScript and XML)는 클라이언트와 서버 간의 비동기 데이터 전송을 가능하게 합니다. 이 프로젝트에서는 XMLHttpRequest 객체를 사용하여 서버에 GET 요청을 보냅니다.
   
   
