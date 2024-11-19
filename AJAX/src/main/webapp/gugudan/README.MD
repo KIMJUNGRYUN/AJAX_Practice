@@ -55,7 +55,7 @@ JSP 구구단 계산 코드
 ```
 <hr>
 
-### 전체 코드 ##3
+### 전체 코드 ###
 **gugu.jsp**
 ``jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
