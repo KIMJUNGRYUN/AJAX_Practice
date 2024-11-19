@@ -55,6 +55,25 @@
     }
   </script>
 </body>
-
 </html>
+```
+<hr>
+**`sum.jsp`**
+
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+    // 클라이언트에서 전달받은 값
+    int n = Integer.parseInt(request.getParameter("val"));
+
+    // 총합 계산
+    int total = 0;
+    for (int i = 1; i <= n; i++) {
+        total += i;
+    }
+
+    // 결과 출력
+    out.print(total);
+%>
 ```
